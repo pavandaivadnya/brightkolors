@@ -1,1 +1,242 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Get a Quotation | BRIGHT KOLORS</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/animations.css"><link rel="stylesheet" href="css/responsive.css"></head><body><header class="site-header"><nav class="nav-shell"><a class="brand" href="index.html"><b>BRIGHT</b> <strong>KOLORS</strong><small>SIGNAGE STUDIO</small></a><div class="nav-desktop"><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="contact.html">Contact</a></div></nav></header><main class="inner"><section class="inner-hero dark"><small>08 / PROJECT ENQUIRY</small><h1>Tell us what<br>you <em>need.</em></h1></section><section class="quote-wrap section"><div class="quote-intro reveal"><small>REQUEST A QUOTATION</small><h2>We'll take it<br>from <em>here.</em></h2><p>Give us the project details. Our team can follow up for measurements, site visits and final pricing.</p><a href="https://wa.me/918553217683?text=Hello%20Bright%20Kolors%2C%20I%20would%20like%20a%20quotation." target="_blank">Prefer WhatsApp? Start a chat ↗</a></div><form id="quoteForm" class="quote-form reveal" enctype="multipart/form-data"><div class="form-grid"><label>Full Name*<input name="name" required placeholder="Your name"></label><label>Mobile Number*<input name="mobile" required placeholder="+91"></label><label>Email<input name="email" type="email" placeholder="you@example.com"></label><label>Company / Shop<input name="company" placeholder="Business name"></label><label>Location<input name="location" placeholder="City / area"></label><label>Service*<select name="service" required><option value="">Select service</option><option>ACP 3D & 2D Boards</option><option>LED Letters</option><option>In-Shop Branding</option><option>Reflective Sign Boards</option><option>Corporate Sign Boards</option><option>Name Plates</option></select></label><label>Project type<select name="projectType"><option>Exterior</option><option>Interior</option><option>Both</option></select></label><label>Approx. width<input name="width" placeholder="e.g. 12 ft"></label><label>Approx. height<input name="height" placeholder="e.g. 4 ft"></label><label>Quantity<input name="quantity" placeholder="e.g. 2"></label><label class="full">Project details<textarea name="message" rows="6" placeholder="Tell us what you want to make..."></textarea></label><label class="full file-label">Reference photo (optional)<input name="reference" type="file" accept="image/*"></label></div><button class="submit-btn" type="submit">Send quotation request <span>↗</span></button><p id="quoteStatus"></p></form></section></main><footer><strong>BRIGHT KOLORS SIGNAGE STUDIO</strong><p>© 2026</p></footer><script src="js/quote.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- PAGE SETUP: Title, mobile viewport, SEO description and shared site styles. -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Request a signage quotation from BRIGHT KOLORS SIGNAGE STUDIO for ACP boards, LED letters, shop branding and more.">
+    <title>
+      Request a Quotation | BRIGHT KOLORS SIGNAGE STUDIO
+    </title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+
+
+
+    /* QUOTATION PAGE ONLY: These styles are limited to this page. */
+    .quote-wrap { display:grid; grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr); gap:clamp(28px,6vw,90px); align-items:start; }
+    .quote-intro { position:sticky; top:130px; }
+    .quote-intro p { max-width:430px; line-height:1.8; color:#777; }
+    .quote-intro a { display:inline-flex; margin-top:18px; font-weight:800; font-size:13px; }
+    .quote-form { padding:clamp(22px,4vw,42px); border:1px solid #d7d7cf; border-radius:28px; background:rgba(255,255,255,.72); box-shadow:0 25px 70px #0000000b; }
+    .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+    .quote-form label { display:flex; flex-direction:column; gap:9px; font-size:12px; font-weight:800; color:#353535; }
+    .quote-form input,.quote-form select,.quote-form textarea { width:100%; min-width:0; padding:14px 15px; border:1px solid #d5d5cd; border-radius:13px; background:#fff; color:#171717; outline:none; transition:border-color .2s,box-shadow .2s; }
+    .quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus { border-color:#171717; box-shadow:0 0 0 3px #d9f21a55; }
+    .quote-form textarea { resize:vertical; min-height:135px; }
+    .quote-form .full { grid-column:1/-1; }
+    .quote-form .file-label input { padding:11px; }
+    .submit-btn { display:flex; align-items:center; justify-content:space-between; gap:20px; width:100%; margin-top:25px; padding:17px 22px; border:0; border-radius:40px; background:#171717; color:#fff; font-weight:850; cursor:pointer; transition:transform .2s,background .2s; }
+    .submit-btn:hover { transform:translateY(-2px); background:#333; }
+    .submit-btn:disabled { opacity:.65; cursor:wait; transform:none; }
+    #quoteStatus { min-height:22px; margin:16px 0 0; font-size:13px; line-height:1.6; }
+    #quoteStatus[data-state="success"] { color:#16733a; }
+    #quoteStatus[data-state="error"] { color:#b42318; }
+    .quote-note { margin-top:18px; color:#777; font-size:11px; line-height:1.6; }
+    @media(max-width:850px) { .quote-wrap { grid-template-columns:1fr; } .quote-intro { position:static; } }
+    @media(max-width:600px) { .form-grid { grid-template-columns:1fr; } .quote-form .full { grid-column:auto; } }
+
+
+
+    </style>
+  </head>
+  <body>
+    <!-- NAVIGATION: Keep this wordmark or add your PNG logo when ready. -->
+    <header class="site-header">
+      <nav class="nav-shell">
+        <a class="brand" href="index.html" aria-label="BRIGHT KOLORS home">
+          <img class="brand-logo" src="assets/logo/bright-kolors-logo.png" alt="BRIGHT KOLORS logo" onerror="this.style.display='none'">
+          <span class="brand-wordmark">
+            <b>
+              BRIGHT
+            </b>
+            <strong>
+              KOLORS
+            </strong>
+            <small>
+              SIGNAGE STUDIO
+            </small>
+          </span>
+        </a>
+        <div class="nav-desktop">
+          <a href="index.html">
+            Home
+          </a>
+          <a href="portfolio.html">
+            Portfolio
+          </a>
+          <a href="contact.html">
+            Contact
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="inner">
+      <!-- PAGE HERO: Introductory heading for the quotation form. -->
+      <!-- SECTION: INNER HERO -->
+      <section class="inner-hero dark">
+        <small>
+          08 / PROJECT ENQUIRY
+        </small>
+        <h1>
+          Tell us what
+          <br>
+          you
+          <em>
+            need.
+          </em>
+        </h1>
+      </section>
+      <!-- QUOTATION SECTION: Keep field names aligned with backend/server.js. -->
+      <!-- SECTION: QUOTE WRAP -->
+      <section class="quote-wrap section">
+        <div class="quote-intro reveal">
+          <small>
+            REQUEST A QUOTATION
+          </small>
+          <h2>
+            We'll take it
+            <br>
+            from
+            <em>
+              here.
+            </em>
+          </h2>
+          <p>
+            Share a few details about your signage project. We can follow up to discuss measurements, materials, site visits and final pricing.
+          </p>
+          <a href="https://wa.me/918553217683?text=Hello%20Bright%20Kolors%2C%20I%20would%20like%20a%20quotation." target="_blank" rel="noopener noreferrer">
+            Prefer WhatsApp? Start a chat ↗
+          </a>
+          <p class="quote-note">
+            Fields marked * are required. You can attach a reference image if you have one.
+          </p>
+        </div>
+        <form id="quoteForm" class="quote-form reveal" enctype="multipart/form-data">
+          <div class="form-grid">
+            <!-- CUSTOMER DETAILS -->
+            <label>
+              Full Name *
+              <input name="name" autocomplete="name" required maxlength="120" placeholder="Your full name">
+            </label>
+            <label>
+              Mobile Number *
+              <input name="mobile" type="tel" autocomplete="tel" required maxlength="40" placeholder="+91 98765 43210">
+            </label>
+            <label>
+              Email Address
+              <input name="email" type="email" autocomplete="email" maxlength="160" placeholder="you@example.com">
+            </label>
+            <label>
+              Company / Shop
+              <input name="company" autocomplete="organization" maxlength="160" placeholder="Business name (optional)">
+            </label>
+            <label>
+              Project Location
+              <input name="location" maxlength="200" placeholder="Area / city">
+            </label>
+            <!-- PROJECT DETAILS: Service labels must match the backend allow-list. -->
+            <label>
+              Service Required *
+              <select name="service" required>
+                <option value="">
+                  Select a service
+                </option>
+                <option>
+                  ACP 3D
+&amp;
+                  2D Boards
+                </option>
+                <option>
+                  LED Letters
+                </option>
+                <option>
+                  In-Shop Branding
+                </option>
+                <option>
+                  Reflective Sign Boards
+                </option>
+                <option>
+                  Corporate Sign Boards
+                </option>
+                <option>
+                  Name Plates
+                </option>
+              </select>
+            </label>
+            <label>
+              Project Type
+              <select name="projectType">
+                <option>
+                  Exterior
+                </option>
+                <option>
+                  Interior
+                </option>
+                <option>
+                  Both
+                </option>
+              </select>
+            </label>
+            <label>
+              Approximate Width
+              <input name="width" maxlength="60" placeholder="e.g. 12 ft">
+            </label>
+            <label>
+              Approximate Height
+              <input name="height" maxlength="60" placeholder="e.g. 4 ft">
+            </label>
+            <label>
+              Quantity
+              <input name="quantity" inputmode="numeric" maxlength="5" pattern="[0-9]{1,5}" placeholder="e.g. 2">
+            </label>
+            <label class="full">
+              Project Details
+              <textarea name="message" rows="5" maxlength="5000" placeholder="Describe the board, lettering, colours, lighting, dimensions or other requirements...">
+
+
+
+
+              </textarea>
+            </label>
+            <label class="full file-label">
+              Reference Photo (optional)
+              <input name="reference" type="file" accept="image/jpeg,image/png,image/webp">
+            </label>
+          </div>
+          <button class="submit-btn" type="submit">
+            <span>
+              Send quotation request
+            </span>
+            <span aria-hidden="true">
+              ↗
+            </span>
+          </button>
+          <p id="quoteStatus" role="status" aria-live="polite">
+          </p>
+          <p class="quote-note">
+            Your request is sent to the website backend. Please do not attach confidential documents.
+          </p>
+        </form>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+      <strong>
+        BRIGHT KOLORS SIGNAGE STUDIO
+      </strong>
+      <p>
+        © 2026 BRIGHT KOLORS SIGNAGE STUDIO
+      </p>
+    </footer>
+    <!-- FORM SCRIPT: Sends the form to POST /api/quotes. -->
+    <script src="js/quote.js">
+
+
+
+
+    </script>
+  </body>
+</html>

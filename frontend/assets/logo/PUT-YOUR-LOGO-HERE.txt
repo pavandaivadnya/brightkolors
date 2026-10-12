@@ -1,0 +1,1 @@
+Add your actual logo image to this folder and name it bright-kolors-logo.png. Use a transparent PNG if possible. The navbar is already configured to display it to the left of BRIGHT KOLORS SIGNAGE STUDIO. Recommended image: square or near-square, transparent background, at least 200 x 200 px.
