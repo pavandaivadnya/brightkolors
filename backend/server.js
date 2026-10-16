@@ -248,7 +248,11 @@ scriptSrc: ["'self'", "https://unpkg.com", "https://cdnjs.cloudflare.com"],
 styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com", "https://unpkg.com"],
 fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com", "data:"],
 imgSrc: ["'self'", "data:", "blob:", "https:"],
-connectSrc: ["'self'"],
+connectSrc: [
+  "'self'",
+  "https://brightkolors.onrender.com",
+  "https://brightkolors.shop"
+],
 upgradeInsecureRequests: IS_PROD ? [] : null
 }
 },
