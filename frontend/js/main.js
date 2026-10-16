@@ -35,8 +35,8 @@ window.addEventListener("pointermove",e=>{const c=$(".cursor-label");if(c){c.sty
 
 const slots={
 ".slot-hero-1":"assets/images/hero-1.jpg",".slot-hero-2":"assets/images/hero-2.jpg",".slot-hero-3":"assets/images/hero-3.jpg",
-".slot-acp":"assets/images/acpIndex.jpg",".slot-led":"assets/images/ledIndex.jpg",".slot-inshop":"assets/images/inshop-1.jpg",
-".slot-reflective":"assets/images/reflective-1.jpg",".slot-corporate":"assets/images/corporate-1.jpg",".slot-nameplates":"assets/images/nameplates-1.jpg",
+".slot-acp":"assets/images/acpIndex.jpg",".slot-led":"assets/images/ledIndex.jpg",".slot-inshop":"assets/images/inshopindex.jpg",
+".slot-reflective":"assets/images/reflec1.jpg",".slot-corporate":"assets/images/corporateindex.jpg",".slot-nameplates":"assets/images/nameplateindex.jpg",
 ".slot-work-1":"assets/images/ledIndex.jpg",".slot-work-2":"assets/images/work-2.jpg",".slot-work-3":"assets/images/work-3.jpg",
 ".slot-infra-1":"assets/images/infrastructure-1.jpg",".slot-infra-2":"assets/images/infrastructure-2.jpg",".slot-infra-3":"assets/images/infrastructure-3.jpg",
 ".slot-map":"assets/images/location.jpg",".slot-contact-map":"assets/images/location.jpg",

@@ -11,3 +11,20 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+!.env.development.example
+
+# Dependencies
+node_modules/
+
+# Private runtime data and uploads
+backend/data/
+backend/uploads/
+uploads/
+
+# Logs
+*.log
